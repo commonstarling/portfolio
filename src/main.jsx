@@ -42,7 +42,7 @@ const projects = [
   },
 ];
 
-const routes = ['/', '/skills', '/projects'];
+const routes = ['/', '/skills', '/projects', '/contact'];
 
 function useRoute() {
   const [path, setPath] = useState(window.location.pathname);
@@ -111,7 +111,7 @@ function Header({ path, navigate }) {
         {[['/', 'Home'], ['/skills', 'Skills']].map(([to, label]) => (
           <a key={to} className={path === to ? 'active' : ''} href={to} onClick={(e) => go(e, to)}>{label}</a>
         ))}
-        <a className="nav-cta" href="mailto:info@sheenamramirez.com">Let’s talk <Arrow diagonal /></a>
+        <a className={path === '/contact' ? 'nav-cta active' : 'nav-cta'} href="/contact" onClick={(e) => go(e, '/contact')}>Let’s talk <Arrow diagonal /></a>
       </nav>
     </header>
   );
@@ -121,7 +121,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p>Made with curiosity, caffeine, and React.</p>
-      <div><a href="https://github.com/commonstarling" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/sheenaramirez/" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:info@sheenamramirez.com">Email</a></div>
+      <div><a href="https://github.com/commonstarling" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/sheenaramirez/" target="_blank" rel="noreferrer">LinkedIn</a><a href="/contact">Contact</a></div>
       <span>© {new Date().getFullYear()} Sheena Ramirez</span>
     </footer>
   );
@@ -223,7 +223,7 @@ function ProjectCard({ project }) {
   );
 }
 
-function Projects() {
+function Projects({ navigate }) {
   return (
     <main className="page">
       <section className="page-intro projects-intro">
@@ -236,7 +236,84 @@ function Projects() {
       </section>
       <section className="contact-banner" id="project-detail">
         <div><span>Have something in mind?</span><h2>Let’s make it <em>real.</em></h2></div>
-        <a className="button light" href="mailto:info@sheenamramirez.com">Start a conversation <Arrow diagonal /></a>
+        <a className="button light" href="/contact" onClick={(e) => { e.preventDefault(); navigate('/contact'); }}>Start a conversation <Arrow diagonal /></a>
+      </section>
+    </main>
+  );
+}
+
+function Contact() {
+  const [status, setStatus] = useState('idle');
+
+  const submit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setStatus('sending');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/info@sheenamramirez.com', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+
+      if (!response.ok) throw new Error('Unable to send message');
+      form.reset();
+      setStatus('sent');
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <main className="page contact-page">
+      <section className="page-intro contact-intro">
+        <div className="eyebrow"><span></span> Get in touch</div>
+        <h1>Let’s start a<br /><em>conversation.</em></h1>
+        <p>Have a project, an opportunity, or simply an interesting idea? Send me a note and I’ll get back to you.</p>
+      </section>
+      <section className="contact-layout">
+        <aside className="contact-details">
+          <span className="section-label">Prefer email?</span>
+          <a href="mailto:info@sheenamramirez.com">info@sheenamramirez.com</a>
+          <p>Based in Chicago and open to thoughtful collaborations near and far.</p>
+          <div className="contact-socials">
+            <a href="https://www.linkedin.com/in/sheenaramirez/" target="_blank" rel="noreferrer">LinkedIn <Arrow diagonal /></a>
+            <a href="https://github.com/commonstarling" target="_blank" rel="noreferrer">GitHub <Arrow diagonal /></a>
+          </div>
+        </aside>
+        <form className="contact-form" onSubmit={submit}>
+          <input type="hidden" name="_subject" value="New portfolio contact" />
+          <input type="hidden" name="_template" value="table" />
+          <input className="contact-honey" type="text" name="_honey" tabIndex="-1" autoComplete="off" />
+          <div className="form-row">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" autoComplete="name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autoComplete="email" required />
+            </label>
+          </div>
+          <label>
+            <span>Subject</span>
+            <input type="text" name="subject" required />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <div className="form-submit">
+            <button className="button primary" type="submit" disabled={status === 'sending'}>
+              {status === 'sending' ? 'Sending…' : 'Send message'} <Arrow />
+            </button>
+            <p className={`form-status ${status}`} role="status" aria-live="polite">
+              {status === 'sent' && 'Thanks — your message is on its way.'}
+              {status === 'error' && 'Something went wrong. Please email me directly instead.'}
+            </p>
+          </div>
+        </form>
       </section>
     </main>
   );
@@ -247,7 +324,7 @@ function App() {
   return (
     <div className="site-shell">
       <Header path={path} navigate={navigate} />
-      {path === '/skills' ? <Skills /> : path === '/projects' ? <Projects /> : <Home navigate={navigate} />}
+      {path === '/skills' ? <Skills /> : path === '/projects' ? <Projects navigate={navigate} /> : path === '/contact' ? <Contact /> : <Home navigate={navigate} />}
       <Footer />
     </div>
   );
