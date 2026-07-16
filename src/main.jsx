@@ -85,7 +85,7 @@ function Header({ path, navigate }) {
         {[['/', 'Home'], ['/skills', 'Skills']].map(([to, label]) => (
           <a key={to} className={path === to ? 'active' : ''} href={to} onClick={(e) => go(e, to)}>{label}</a>
         ))}
-        <a className="nav-cta" href="mailto:sheenaramirez@example.com">Let’s talk <Arrow diagonal /></a>
+        <a className="nav-cta" href="mailto:info@sheenamramirez.com">Let’s talk <Arrow diagonal /></a>
       </nav>
     </header>
   );
@@ -95,7 +95,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p>Made with curiosity, caffeine, and React.</p>
-      <div><a href="https://github.com/commonstarling" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/sheenaramirez/" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:sheenaramirez@example.com">Email</a></div>
+      <div><a href="https://github.com/commonstarling" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/sheenaramirez/" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:info@sheenamramirez.com">Email</a></div>
       <span>© {new Date().getFullYear()} Sheena Ramirez</span>
     </footer>
   );
@@ -210,7 +210,7 @@ function Projects() {
       </section>
       <section className="contact-banner" id="project-detail">
         <div><span>Have something in mind?</span><h2>Let’s make it <em>real.</em></h2></div>
-        <a className="button light" href="mailto:hello@example.com">Start a conversation <Arrow diagonal /></a>
+        <a className="button light" href="mailto:info@sheenamramirez.com">Start a conversation <Arrow diagonal /></a>
       </section>
     </main>
   );
