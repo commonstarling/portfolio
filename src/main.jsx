@@ -82,7 +82,7 @@ function Header({ path, navigate }) {
         <span></span><span></span>
       </button>
       <nav className={open ? 'nav open' : 'nav'} aria-label="Main navigation">
-        {[['/', 'Home'], ['/skills', 'Skills'], ['/projects', 'Projects']].map(([to, label]) => (
+        {[['/', 'Home'], ['/skills', 'Skills']].map(([to, label]) => (
           <a key={to} className={path === to ? 'active' : ''} href={to} onClick={(e) => go(e, to)}>{label}</a>
         ))}
         <a className="nav-cta" href="mailto:sheenaramirez@example.com">Let’s talk <Arrow diagonal /></a>
@@ -95,7 +95,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p>Made with curiosity, caffeine, and React.</p>
-      <div><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:sheenaramirez@example.com">Email</a></div>
+      <div><a href="https://github.com/commonstarling" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/sheenaramirez/" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:sheenaramirez@example.com">Email</a></div>
       <span>© {new Date().getFullYear()} Sheena Ramirez</span>
     </footer>
   );
@@ -122,22 +122,22 @@ function Home({ navigate }) {
           <h1>I build digital things that feel <em>human.</em></h1>
           <p className="hero-intro">I’m Sheena — a senior software developer with a soft spot for thoughtful design, smooth interactions, and the tiny details that make people smile.</p>
           <div className="hero-actions">
-            <a className="button primary" href="/projects" onClick={(e) => { e.preventDefault(); navigate('/projects'); }}>See my work <Arrow /></a>
-            <a className="text-link" href="/skills" onClick={(e) => { e.preventDefault(); navigate('/skills'); }}>What I’m good at <Arrow diagonal /></a>
+            {/* <a className="button primary" href="/projects" onClick={(e) => { e.preventDefault(); navigate('/projects'); }}>See my work <Arrow /></a> */}
+            <a className="button primary" href="/skills" onClick={(e) => { e.preventDefault(); navigate('/skills'); }}>What I’m good at<Arrow /></a>
           </div>
         </div>
         <Portrait />
       </section>
       <section className="ticker" aria-label="Specialties">
-        {['React', 'TypeScript', 'Creative coding', 'Good coffee', 'Design systems'].map((item) => <React.Fragment key={item}><span>{item}</span><i>✦</i></React.Fragment>)}
+        {['JavaScript/TypeScript', 'Data Visualization', 'Technical Communication', 'Design Systems'].map((item) => <React.Fragment key={item}><span>{item}</span><i>✦</i></React.Fragment>)}
       </section>
-      <section className="home-section">
+      {/* <section className="home-section">
         <div className="section-heading"><span>Selected work</span><h2>A few things I’ve made<br />with <em>care.</em></h2></div>
         <div className="project-preview">
           {projects.slice(0, 2).map((project) => <ProjectCard key={project.number} project={project} />)}
         </div>
         <a className="button outline" href="/projects" onClick={(e) => { e.preventDefault(); navigate('/projects'); }}>Explore all projects <Arrow /></a>
-      </section>
+      </section> */}
     </main>
   );
 }
@@ -163,7 +163,7 @@ function Skills() {
       <section className="skills-grid">
         {skills.map((skill, index) => <SkillCard key={skill.name} skill={skill} index={index} />)}
       </section>
-      <section className="approach">
+      {/* <section className="approach">
         <span className="section-label">How I work</span>
         <div className="approach-grid">
           <h2>Good work lives where <em>code</em> and <em>care</em> meet.</h2>
@@ -173,7 +173,7 @@ function Skills() {
             <article><span>03</span><div><h3>Sweat the details</h3><p>Polish is not extra. It’s part of how a product earns trust.</p></div></article>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
