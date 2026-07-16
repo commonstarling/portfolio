@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import headshot from './assets/headshot-optimized.png';
+import headshot from './assets/headshot-smiling.webp';
 import './styles.css';
 
 const skills = [
@@ -67,6 +67,22 @@ function Arrow({ diagonal = false }) {
   return <span aria-hidden="true">{diagonal ? '↗' : '→'}</span>;
 }
 
+function SocialIcon({ type }) {
+  if (type === 'linkedin') {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.5 8.1H3.2V19h3.3V8.1ZM4.8 3a1.9 1.9 0 1 0 0 3.8A1.9 1.9 0 0 0 4.8 3ZM19.5 12.7c0-3.3-1.8-4.9-4.2-4.9-1.9 0-2.8 1.1-3.3 1.8V8.1H8.7V19H12v-5.4c0-1.4.3-2.8 2.1-2.8 1.8 0 1.8 1.7 1.8 2.9V19h3.3l.3-6.3Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2.5a9.7 9.7 0 0 0-3.1 18.9c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 2.9.9.1-.7.4-1.1.7-1.4-2.3-.3-4.6-1.1-4.6-4.8 0-1.1.4-1.9 1-2.6-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.2 9.2 0 0 1 4.9 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.3 4.5-4.6 4.8.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.7 9.7 0 0 0 12 2.5Z" />
+    </svg>
+  );
+}
+
 function Header({ path, navigate }) {
   const [open, setOpen] = useState(false);
   const go = (event, to) => {
@@ -77,7 +93,17 @@ function Header({ path, navigate }) {
 
   return (
     <header className="header">
-      <a className="logo" href="/" onClick={(e) => go(e, '/')}>SR<span>.</span></a>
+      <div className="header-left">
+        <a className="logo" href="/" onClick={(e) => go(e, '/')}>SR<span>.</span></a>
+        <div className="header-socials" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/sheenaramirez/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <SocialIcon type="linkedin" />
+          </a>
+          <a href="https://github.com/commonstarling" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <SocialIcon type="github" />
+          </a>
+        </div>
+      </div>
       <button className="menu-button" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>
         <span></span><span></span>
       </button>
