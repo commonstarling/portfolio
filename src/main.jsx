@@ -82,7 +82,7 @@ function Header({ path, navigate }) {
         {[['/', 'Home'], ['/skills', 'Skills'], ['/projects', 'Projects']].map(([to, label]) => (
           <a key={to} className={path === to ? 'active' : ''} href={to} onClick={(e) => go(e, to)}>{label}</a>
         ))}
-        <a className="nav-cta" href="mailto:hello@example.com">Let’s talk <Arrow diagonal /></a>
+        <a className="nav-cta" href="mailto:sheenaramirez@example.com">Let’s talk <Arrow diagonal /></a>
       </nav>
     </header>
   );
@@ -92,7 +92,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p>Made with curiosity, caffeine, and React.</p>
-      <div><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:hello@example.com">Email</a></div>
+      <div><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a><a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:sheenaramirez@example.com">Email</a></div>
       <span>© {new Date().getFullYear()} Sheena Ramirez</span>
     </footer>
   );
