@@ -4,12 +4,15 @@ import headshot from './assets/headshot-optimized.png';
 import './styles.css';
 
 const skills = [
-  { name: 'React', level: 'Advanced', mark: 'R', tone: 'blue' },
+  { name: 'JavaScript', level: 'Advanced', mark: 'JS', tone: 'ink' },
   { name: 'TypeScript', level: 'Advanced', mark: 'TS', tone: 'ink' },
-  { name: 'Next.js', level: 'Advanced', mark: 'N', tone: 'dark' },
-  { name: 'Node.js', level: 'Proficient', mark: 'JS', tone: 'green' },
-  { name: 'UI / UX', level: 'Proficient', mark: '✦', tone: 'coral' },
+  { name: 'Vue', level: 'Advanced', mark: 'V', tone: 'blue' },
+  { name: 'Data Visualizations', level: 'Advanced', mark: 'DV', tone: 'blue', details: 'AG-Grid, Highcharts, D3' },
+  { name: 'GitHub Copilot', level: 'Advanced', mark: 'GC', tone: 'coral' },
   { name: 'Figma', level: 'Proficient', mark: 'F', tone: 'purple' },
+  { name: 'React', level: 'Proficient', mark: 'R', tone: 'blue' },
+  { name: 'Next.js', level: 'Proficient', mark: 'N', tone: 'dark' },
+  { name: 'Node.js', level: 'Proficient', mark: 'JS', tone: 'green' },
 ];
 
 const projects = [
@@ -155,7 +158,7 @@ function Skills() {
       <section className="page-intro skills-intro">
         <div className="eyebrow"><span></span> Skills & tools</div>
         <h1>My digital<br /><em>toolbox.</em></h1>
-        <p>I like turning complex problems into simple, expressive experiences. These are the tools I reach for most often.</p>
+        <p>A selection of the languages, frameworks, and tools I use to build thoughtful digital experiences.</p>
       </section>
       <section className="skills-grid">
         {skills.map((skill, index) => <SkillCard key={skill.name} skill={skill} index={index} />)}
