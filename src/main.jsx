@@ -18,27 +18,11 @@ const skills = [
 const projects = [
   {
     number: '01',
-    title: 'Luma Finance',
-    description: 'A clear, calm dashboard that makes personal finances feel a little less complicated.',
-    tags: ['React', 'TypeScript', 'Recharts'],
+    title: 'MarketPulse',
+    description: 'A simple, clean dashboard for tracking personal investment portfolio trends.',
+    tags: ['React', 'TypeScript', 'AG Grid', 'Highcharts'],
     color: 'mint',
     image: 'dashboard',
-  },
-  {
-    number: '02',
-    title: 'Drift Journal',
-    description: 'A focused writing space built for capturing thoughts without the usual digital noise.',
-    tags: ['Next.js', 'Supabase', 'Framer Motion'],
-    color: 'lavender',
-    image: 'journal',
-  },
-  {
-    number: '03',
-    title: 'Northwind Studio',
-    description: 'A playful studio site for a team that believes serious work can still have personality.',
-    tags: ['React', 'GSAP', 'Sanity'],
-    color: 'peach',
-    image: 'studio',
   },
 ];
 
@@ -148,7 +132,7 @@ function Home({ navigate }) {
           <h1>I build digital things that feel <em>human.</em></h1>
           <p className="hero-intro">I’m Sheena — a senior software developer with a soft spot for thoughtful design, smooth interactions, and the tiny details that make people smile.</p>
           <div className="hero-actions">
-            {/* <a className="button primary" href="/projects" onClick={(e) => { e.preventDefault(); navigate('/projects'); }}>See my work <Arrow /></a> */}
+            <a className="button primary" href="/projects" onClick={(e) => { e.preventDefault(); navigate('/projects'); }}>See my work <Arrow /></a>
             <a className="button primary" href="/skills" onClick={(e) => { e.preventDefault(); navigate('/skills'); }}>What I’m good at<Arrow /></a>
           </div>
         </div>
@@ -157,13 +141,13 @@ function Home({ navigate }) {
       <section className="ticker" aria-label="Specialties">
         {['JavaScript/TypeScript', 'Data Visualization', 'Technical Communication', 'Design Systems'].map((item) => <React.Fragment key={item}><span>{item}</span><i>✦</i></React.Fragment>)}
       </section>
-      {/* <section className="home-section">
+      <section className="home-section">
         <div className="section-heading"><span>Selected work</span><h2>A few things I’ve made<br />with <em>care.</em></h2></div>
         <div className="project-preview">
           {projects.slice(0, 2).map((project) => <ProjectCard key={project.number} project={project} />)}
         </div>
         <a className="button outline" href="/projects" onClick={(e) => { e.preventDefault(); navigate('/projects'); }}>Explore all projects <Arrow /></a>
-      </section> */}
+      </section>
     </main>
   );
 }
@@ -205,7 +189,7 @@ function Skills() {
 }
 
 function ProjectVisual({ type }) {
-  if (type === 'dashboard') return <div className="mock dashboard-mock"><div className="mock-sidebar"><b>luma</b><i></i><i></i><i></i></div><div className="mock-body"><span>Good morning, Alex</span><h4>$24,680.00</h4><div className="chart"><i></i></div><div className="mini-cards"><i></i><i></i><i></i></div></div></div>;
+  if (type === 'dashboard') return <div className="mock dashboard-mock"><div className="mock-sidebar"><b>MarketPulse</b><i></i><i></i><i></i></div><div className="mock-body"><span>Good morning, Alex</span><h4>$24,680.00</h4><div className="chart"><i></i></div><div className="mini-cards"><i></i><i></i><i></i></div></div></div>;
   if (type === 'journal') return <div className="mock journal-mock"><div className="journal-nav">drift <span>•••</span></div><div className="journal-body"><small>WEDNESDAY, JUNE 12</small><h4>Small moments worth remembering.</h4><p>The light through the kitchen window this morning...</p><i></i><i></i><i></i></div></div>;
   return <div className="mock studio-mock"><div className="studio-nav">NORTHWIND <span>WORK · ABOUT</span></div><div className="studio-body"><small>INDEPENDENT CREATIVE STUDIO</small><h4>We make ideas<br />move.</h4><div className="shape s1"></div><div className="shape s2"></div></div></div>;
 }
@@ -217,7 +201,7 @@ function ProjectCard({ project }) {
       <div className="project-info">
         <span>{project.number}</span>
         <div><h3>{project.title}</h3><p>{project.description}</p><div className="tags">{project.tags.map((tag) => <i key={tag}>{tag}</i>)}</div></div>
-        <a href="#project-detail" aria-label={`View ${project.title}`}>↗</a>
+        <a href="https://marketpulse.aged-dust-c01f.workers.dev/" target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title}`}>↗</a>
       </div>
     </article>
   );
